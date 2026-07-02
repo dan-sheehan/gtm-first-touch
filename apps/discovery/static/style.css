@@ -1,0 +1,463 @@
+:root {
+  --bg: #0d1117;
+  --card: #161b22;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --accent: #58a6ff;
+  --accent-light: rgba(88, 166, 255, 0.12);
+  --border: #30363d;
+  --danger: #f85149;
+  --success: #3fb950;
+  --radius: 8px;
+  --space: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 860px;
+  margin: 32px auto 80px;
+  padding: 0 16px;
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.title {
+  margin: 6px 0 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* Buttons */
+
+.primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.primary:hover {
+  opacity: 0.9;
+}
+
+.primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ghost-button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ghost-button:hover {
+  border-color: var(--muted);
+}
+
+.ghost-button.danger {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.ghost-button.danger:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+.status {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.hint {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Card */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 16px;
+}
+
+/* Form */
+
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  font-size: 15px;
+  font-family: inherit;
+  background: #21262d;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+select {
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--accent-light);
+  border-color: var(--accent);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+/* Output area (streaming) */
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.output-header .section-title {
+  margin-bottom: 0;
+}
+
+.output-area {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Streaming cursor */
+
+.streaming-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 18px;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Results grid */
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.result-card {
+  margin-bottom: 0;
+}
+
+/* Bullet list in results */
+
+.bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bullet-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.bullet-list li::before {
+  content: "•";
+  color: var(--accent);
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.bullet-text {
+  flex: 1;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1.5;
+  min-height: 28px;
+}
+
+.bullet-text:hover {
+  border-color: var(--border);
+  background: #21262d;
+}
+
+.bullet-text:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #21262d;
+}
+
+/* Field rows for prospect details */
+
+.field-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.field-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.field-label {
+  font-weight: 600;
+  color: var(--muted);
+  flex-shrink: 0;
+  min-width: 100px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.field-value {
+  flex: 1;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.field-value:hover {
+  border-color: var(--border);
+  background: #21262d;
+}
+
+.field-value:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #21262d;
+}
+
+.field-value a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.field-value a:hover {
+  text-decoration: underline;
+}
+
+.not-available {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Results actions */
+
+.results-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Saved preps */
+
+.saved-section {
+  margin-top: 8px;
+}
+
+.saved-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.saved-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  text-decoration: none;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.saved-item:hover {
+  border-color: var(--accent);
+}
+
+.saved-item-name {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.saved-item-meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.saved-item-date {
+  font-size: 13px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 32px 0;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .field-label {
+    min-width: auto;
+  }
+}

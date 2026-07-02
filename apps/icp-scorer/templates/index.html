@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ICP Scorer</title>
+    <link rel="stylesheet" href="{{ prefix }}/static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div>
+          <div class="eyebrow">Scoring Engine</div>
+          <h1 class="title">ICP Scorer</h1>
+          <p class="subtitle">Score companies against your Ideal Customer Profile with weighted multi-dimension analysis.</p>
+        </div>
+        <div class="header-actions">
+          <a class="ghost-button" href="/">Home</a>
+        </div>
+      </header>
+
+      <!-- Scoring Form -->
+      <section class="card form-card">
+        <h2 class="section-title">Score a Company</h2>
+        <form id="score-form">
+          <div class="form-stack">
+            <div class="form-group">
+              <label for="company_name">Company Name</label>
+              <input type="text" id="company_name" name="company_name" placeholder="e.g. Acme Corp" required />
+            </div>
+            <div id="dimensions-container"></div>
+            <div class="actions">
+              <button type="submit" class="primary" id="score-btn">Score Company</button>
+              <span class="status" id="score-status"></span>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Results -->
+      <section class="card result-card" id="result-card" style="display:none">
+        <div class="result-header">
+          <div>
+            <h2 class="section-title" id="result-title">Score Result</h2>
+          </div>
+          <div class="score-display">
+            <span class="score-number" id="score-number"></span>
+            <span class="score-grade" id="score-grade"></span>
+          </div>
+        </div>
+        <div id="breakdown-area"></div>
+      </section>
+
+      <!-- Saved Scores -->
+      <section class="saved-section">
+        <h2 class="section-title">Scored Companies</h2>
+        <div id="saved-list" class="saved-list"></div>
+        <div class="empty-state" id="saved-empty">No companies scored yet. Run make seed to load Harbor Analytics.</div>
+      </section>
+    </div>
+
+    <script>window.APP_PREFIX = "{{ prefix }}";</script>
+    <script src="{{ prefix }}/static/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+{
+  "dimensions": [
+    {
+      "id": "industry_fit",
+      "label": "Industry Fit",
+      "weight": 25,
+      "options": [
+        {"value": "saas", "label": "SaaS / Software", "score": 100},
+        {"value": "fintech", "label": "Fintech", "score": 90},
+        {"value": "healthtech", "label": "HealthTech", "score": 75},
+        {"value": "ecommerce", "label": "E-Commerce", "score": 70},
+        {"value": "marketplace", "label": "Marketplace", "score": 65},
+        {"value": "other_tech", "label": "Other Tech", "score": 50},
+        {"value": "non_tech", "label": "Non-Tech", "score": 20}
+      ]
+    },
+    {
+      "id": "company_size",
+      "label": "Company Size",
+      "weight": 20,
+      "options": [
+        {"value": "11_50", "label": "11-50 employees", "score": 60},
+        {"value": "51_200", "label": "51-200 employees", "score": 100},
+        {"value": "201_500", "label": "201-500 employees", "score": 90},
+        {"value": "501_1000", "label": "501-1000 employees", "score": 70},
+        {"value": "1_10", "label": "1-10 employees", "score": 30},
+        {"value": "1000_plus", "label": "1000+ employees", "score": 40}
+      ]
+    },
+    {
+      "id": "funding_stage",
+      "label": "Funding Stage",
+      "weight": 20,
+      "options": [
+        {"value": "series_a", "label": "Series A", "score": 90},
+        {"value": "series_b", "label": "Series B", "score": 100},
+        {"value": "series_c_plus", "label": "Series C+", "score": 75},
+        {"value": "seed", "label": "Seed", "score": 50},
+        {"value": "bootstrapped", "label": "Bootstrapped", "score": 40},
+        {"value": "public", "label": "Public", "score": 30},
+        {"value": "unknown", "label": "Unknown", "score": 20}
+      ]
+    },
+    {
+      "id": "tech_stack",
+      "label": "Tech Stack Signals",
+      "weight": 15,
+      "options": [
+        {"value": "modern_full", "label": "Modern stack + analytics tools", "score": 100},
+        {"value": "modern_partial", "label": "Modern stack, limited tooling", "score": 75},
+        {"value": "legacy_migrating", "label": "Legacy, actively migrating", "score": 60},
+        {"value": "legacy", "label": "Legacy stack", "score": 30},
+        {"value": "unknown", "label": "Unknown", "score": 20}
+      ]
+    },
+    {
+      "id": "growth_signals",
+      "label": "Growth Signals",
+      "weight": 10,
+      "options": [
+        {"value": "strong", "label": "Hiring aggressively + recent funding", "score": 100},
+        {"value": "moderate", "label": "Steady hiring, stable growth", "score": 70},
+        {"value": "flat", "label": "Flat or slow growth", "score": 40},
+        {"value": "contracting", "label": "Layoffs or downsizing", "score": 15},
+        {"value": "unknown", "label": "Unknown", "score": 25}
+      ]
+    },
+    {
+      "id": "buying_signals",
+      "label": "Buying Signals",
+      "weight": 10,
+      "options": [
+        {"value": "active_eval", "label": "Active evaluation / RFP", "score": 100},
+        {"value": "inbound", "label": "Inbound interest", "score": 85},
+        {"value": "tech_trigger", "label": "Technology trigger (new tool adoption)", "score": 70},
+        {"value": "content_engaged", "label": "Engaged with content", "score": 50},
+        {"value": "cold", "label": "No known signals", "score": 15}
+      ]
+    }
+  ],
+  "thresholds": {
+    "A": 80,
+    "B": 60,
+    "C": 40,
+    "D": 0
+  }
+}

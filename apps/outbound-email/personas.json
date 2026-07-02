@@ -1,0 +1,32 @@
+{
+  "personas": [
+    {
+      "id": "vp_sales",
+      "title": "VP Sales",
+      "pain_points": ["pipeline visibility", "rep productivity", "forecast accuracy", "deal velocity"],
+      "tone": "executive, metric-driven",
+      "value_props": ["revenue impact", "time savings", "pipeline acceleration"]
+    },
+    {
+      "id": "head_revops",
+      "title": "Head of RevOps",
+      "pain_points": ["tool sprawl", "data hygiene", "process automation", "reporting overhead"],
+      "tone": "operational, systems-thinking",
+      "value_props": ["workflow efficiency", "data accuracy", "reduced manual work"]
+    },
+    {
+      "id": "founder",
+      "title": "Founder / CEO",
+      "pain_points": ["revenue growth", "team efficiency", "competitive edge", "burn rate"],
+      "tone": "strategic, direct, time-constrained",
+      "value_props": ["growth acceleration", "competitive advantage", "team leverage"]
+    },
+    {
+      "id": "ic_sdr",
+      "title": "SDR / BDR",
+      "pain_points": ["meeting booking rate", "personalization at scale", "research time", "email deliverability"],
+      "tone": "tactical, peer-to-peer, action-oriented",
+      "value_props": ["more meetings booked", "less manual research", "better response rates"]
+    }
+  ]
+}

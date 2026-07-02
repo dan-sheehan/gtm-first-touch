@@ -1,0 +1,34 @@
+[
+  {
+    "company_url": "https://harboranalytics.example",
+    "company_name": "Harbor Analytics",
+    "prospect_name": "Priya Shah",
+    "selling_as": "revenue intelligence platform",
+    "company_bullets": {
+      "name": "Harbor Analytics",
+      "bullets": [
+        "Series B retail data platform with about 140 employees and $39M total raised.",
+        "Raised a $30M Series B ten months ago and is now expanding go-to-market headcount.",
+        "Hiring 12 sales roles across AE, SDR, and sales management with no visible RevOps hire.",
+        "Pain hypothesis: pipeline process and manager visibility may lag behind headcount growth.",
+        "Best opening: ask how Priya is defining the sales operating rhythm before the new hires ramp."
+      ]
+    },
+    "prospect_data": {
+      "name": "Priya Shah",
+      "current_role": "VP of Sales at Harbor Analytics",
+      "linkedin_url": "https://www.linkedin.com/in/priya-shah-harbor-example",
+      "college": "Not available",
+      "hobbies": "Not available",
+      "sports_teams": "Not available",
+      "bullets": [
+        "Recently hired to scale Harbor's mid-market sales motion after the Series B.",
+        "Likely owns hiring, pipeline discipline, manager coaching, and forecast reliability.",
+        "The strongest discovery angle is how she plans to create repeatability before the team doubles.",
+        "Potential urgency: sales hiring is visible, but a dedicated RevOps owner is not.",
+        "Be ready to discuss how account signals become manager actions, not just dashboards."
+      ]
+    },
+    "raw_markdown": "# Discovery Call Prep: Harbor Analytics\n\n## Pain Hypothesis\n\nHarbor Analytics is entering the classic post-Series B scaling window: new VP of Sales, 12 open sales roles, about 38% YoY headcount growth, and no visible RevOps hire. Priya may be inheriting the mandate to grow pipeline before the operating system for scoring, inspection, coaching, and handoffs is fully built.\n\n## Discovery Questions\n\n1. What changed in the sales motion after the Series B?\n2. How are you deciding which accounts deserve rep time right now?\n3. Where do managers lose visibility between first touch, discovery, and next step?\n4. What does a high-quality opportunity look like for Harbor today?\n5. How are new reps learning what good discovery sounds like?\n6. Which pipeline reviews feel too manual or subjective today?\n7. What signals tell you an account is real versus just active in the CRM?\n8. If the team adds 12 sales hires, what breaks first in the current process?\n\n## Competitive Landmines\n\n1. If Harbor already has Salesforce, Gong, and Outreach, ask where those systems still leave managers stitching context together manually.\n2. If Harbor is considering a broad BI tool, ask whether the team needs dashboards or workflow-level coaching actions for sales managers.\n\n## Talk Track\n\nLead with the operating problem, not the tooling. Priya likely already has enough dashboards. The more interesting question is whether her managers can turn signals into a repeatable weekly cadence as the team scales.\n\n## Next Step\n\nOffer a 20-minute working session to map Harbor's account-review workflow from signal detection through discovery prep and manager coaching."
+  }
+]
