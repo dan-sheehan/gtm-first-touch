@@ -1,83 +1,108 @@
 # GTM First Touch
 
-A local-first GTM workflow bundle for turning one target account into a scored, researched, persona-specific first touch and discovery plan.
+A portable workflow pack for taking **one target account** from initial fit assessment to research, a first-touch email, and discovery preparation inside your existing AI environment.
 
-This folder contains the recruiter-facing four-app version:
+**ICP Scorer → Enrichment → Outbound First Touch → Discovery Prep**
 
-1. **ICP Scorer** - decide whether the account is worth pursuing.
-2. **Enrichment** - gather account context, funding, hiring, tech stack, and competitive notes.
-3. **Outbound Email** - generate first-touch outreach from public GTM signals.
-4. **Discovery Call Prep** - prepare pain hypotheses and discovery questions.
+Use it in ChatGPT, Claude, Claude Code, Codex, or another assistant that can follow Markdown instructions. The core is one [self-contained workflow](gtm-first-touch/workflow.md). It needs no Flask, SQLite, local server, Python installation, model-provider integration, or project API keys.
 
-## Quick Start
+## Start with a real account
 
-```bash
-make install
-make doctor
-make start
-```
+1. Open [workflow.md](gtm-first-touch/workflow.md) and copy its entire contents into a new conversation.
+2. Add a short description of what you sell, who it is for, what makes an account a good fit, and the target account's name and website if known. Include any research you already have. The workflow includes an intake form; separate templates are optional.
+3. Say: **“Start ICP Scorer for this account.”** Review or correct the assessment.
+4. Say **“Continue to Enrichment,” “Continue to Outbound First Touch,”** and **“Continue to Discovery Prep”** as you are ready.
+5. Review the research and draft before using them. Nothing is sent automatically.
 
-Open `http://localhost:8000`. `make start` runs the hub in the foreground; leave it open while using the apps.
+By default, the assistant works one stage at a time. To get a complete draft, say **“Run all four stages using this context.”** Missing essential input may still require a question. To keep your work, ask **“Give me the complete updated account brief.”** Paste that brief with the workflow into a new conversation to resume.
 
-Seed the deterministic Harbor Analytics demo from a second terminal:
+## Try the included example
 
-```bash
-make reseed
-```
+Open the [Harbor Analytics walkthrough](gtm-first-touch/examples/harbor-analytics.md). Paste the workflow and the example's **Exercise input** into a conversation, then use its starter prompt. It requires no browsing. Compare your results with the **Worked outputs** afterward.
 
-Use `make seed` to seed only when no saved demo data exists. Use `make stop` when finished.
+Harbor, its people, source notes, and business situation are fictional. The example uses a fixed scenario date and a revenue-intelligence seller. Your real workflow uses **your** offer and ICP. Different models can produce different reasonable assessments and wording.
 
-## Model Provider
+## Choose how to use it
 
-Seeded Harbor data works without a model provider. Live enrichment, outbound generation, and discovery prep use `apps/ai_client.py`.
+### ChatGPT
 
-| Provider | Setup |
-| --- | --- |
-| `claude_cli` default | Install/authenticate Claude CLI. Optional: `GTM_AI_MODEL` or `CLAUDE_MODEL` |
-| `openai` | `export GTM_AI_PROVIDER=openai`, plus `OPENAI_API_KEY` or `GTM_AI_API_KEY`, and `GTM_AI_MODEL` or `OPENAI_MODEL` |
-| `anthropic` | `export GTM_AI_PROVIDER=anthropic`, plus `ANTHROPIC_API_KEY` or `GTM_AI_API_KEY`, and `GTM_AI_MODEL` or `ANTHROPIC_MODEL` |
-| `command` | `export GTM_AI_PROVIDER=command` and `export GTM_AI_COMMAND="your-command"` |
+Paste the complete workflow and your account/seller context into a chat. Follow the four stage requests above. If browsing is available in your session, let the assistant research public sources; otherwise supply notes or excerpts. Attachments are convenient where supported, but pasting text is sufficient.
 
-Run `make doctor` after changing provider settings. The `command` provider reads the full prompt from stdin and must print the model response to stdout.
+### Claude
 
-## Recruiter Path: One Real Account
+Use the same workflow and stage requests in a Claude conversation. Paste your seller context and account notes, review each result, and carry the account brief forward. No Claude Code installation or special project setup is required.
 
-Start with the seeded Harbor walkthrough, then try one real account:
+### Claude Code
 
-1. Open **ICP Scorer** and score the account using industry, size, funding stage, tech fit, growth signals, and buying signals.
-2. Open **Enrichment**. It reads recent saved ICP scores and preselects the latest account, so you can run enrichment without retyping the company name.
-3. Open **Outbound Email**. It reads recent saved Enrichment rows, preselects the latest enriched account, fills the company URL/name, and suggests a sales/revenue prospect when Enrichment found one. The prompt carries the selected enrichment context forward and looks for GTM signals like funding, hiring, new sales leadership, RevOps gaps, pipeline visibility, sales process, discovery, and coaching pain.
-4. Open **Discovery Call Prep** and use the same account/prospect to generate pain hypotheses, discovery questions, landmines, and a next step.
-
-Expected flow:
+Open a local copy of this repository in Claude Code and ask:
 
 ```text
-ICP Scorer -> Enrichment -> Outbound Email -> Discovery Call Prep
+Read gtm-first-touch/workflow.md and follow it for one target account.
+Start with ICP Scorer. Here is my seller and account context: ...
 ```
 
-## Privacy And Scope
+For optional skill access, run the following **from the repository root**. It copies the complete pack, including its relative references, into your personal skills directory and leaves an existing installation alone:
 
-This is a local alpha, not hosted SaaS. The Flask apps run on your machine, and saved app data is stored in local SQLite databases under your home directory.
-
-Local/private: seeded Harbor data, saved scores, saved enrichments, saved email sequences, and saved discovery prep rows.
-
-Sent to the model provider during live use: the prompt, company/prospect fields you enter, and any public account context the app asks the provider to research or use. With `claude_cli`, the app enables Claude web tools for public research. Other providers receive the prompt through their API or command wrapper.
-
-## How It Runs
-
-- Python + Flask
-- SQLite per app in the user's home directory
-- Vanilla HTML/CSS/JS
-- Gateway at `http://localhost:8000`
-- No frontend build step
-
-## Useful Commands
-
-```bash
-make install      # install Python dependencies
-make doctor       # check Python, packages, app files, ports, and provider setup
-make start        # start all four apps plus the hub
-make reseed       # reset Harbor Analytics demo data
-make stop         # stop the local hub and app servers
-make lint         # run ruff if installed
+```sh
+mkdir -p ~/.claude/skills
+if [ -e ~/.claude/skills/gtm-first-touch ]; then
+  echo "Already installed; review the existing copy before replacing it."
+else
+  cp -R gtm-first-touch ~/.claude/skills/gtm-first-touch
+fi
 ```
+
+Then invoke **`/gtm-first-touch`** with your seller and account context. If the skill does not appear, restart Claude Code. Project installations can instead use `.claude/skills/gtm-first-touch/`. See the [official Claude Code skill instructions](https://code.claude.com/docs/en/skills).
+
+### Codex
+
+Open this repository in Codex and use the same direct file-reading request shown above. For optional skill access, run this **from the repository root**:
+
+```sh
+mkdir -p ~/.agents/skills
+if [ -e ~/.agents/skills/gtm-first-touch ]; then
+  echo "Already installed; review the existing copy before replacing it."
+else
+  cp -R gtm-first-touch ~/.agents/skills/gtm-first-touch
+fi
+```
+
+Then invoke **`$gtm-first-touch`** with your seller and account context. If the skill does not appear, restart Codex. Project installations can instead use `.agents/skills/gtm-first-touch/`. See the [official OpenAI skill instructions](https://learn.chatgpt.com/docs/build-skills).
+
+Both optional installations use the **same `SKILL.md` and workflow**. There are no separate host implementations. Installed copies are snapshots: updates require reviewing and replacing your installed copy. Do not copy only `SKILL.md`; its workflow must travel with it. Direct file reading is always available without installation.
+
+## What is in the pack
+
+| File | Purpose |
+| --- | --- |
+| [workflow.md](gtm-first-touch/workflow.md) | The canonical instructions, intake, four stage prompts, output guidance, and account handoff. Sufficient on its own. |
+| [SKILL.md](gtm-first-touch/SKILL.md) | Optional shared entrypoint for assistants that support skills. |
+| [Seller context](gtm-first-touch/templates/seller-context.md) | Optional reusable description of your offer, ICP, and supported claims. |
+| [Account brief](gtm-first-touch/templates/account-brief.md) | Optional Markdown record for one account and its four-stage progress. |
+| [ICP rubric](gtm-first-touch/references/icp-rubric.md) | An illustrative technology-company rubric adapted from the prototype; use only if it fits your seller. |
+| [Personas](gtm-first-touch/references/personas.md) | Example sales, RevOps, founder, and SDR perspectives to adapt. |
+| [Harbor Analytics](gtm-first-touch/examples/harbor-analytics.md) | Fictional input and worked outputs for the whole workflow. |
+
+For basic use, paste only the workflow and your context. Templates, references, files on disk, skill installation, and browsing are optional.
+
+## Privacy and limitations
+
+The pack runs in the assistant you choose. That environment's access, billing, retention, and privacy settings apply to information you paste, attach, or let it read. A local Markdown file can still be transmitted to a model when you ask an assistant to use it. This project does not provide a private processing boundary.
+
+Use only account and seller material you are comfortable sharing with that environment. Keep real account work separate from the included fictional example. If saving work in this repository, use `accounts/`; it is excluded from normal Git adds. That ignore rule is not encryption, does not protect already tracked files, and does not apply to other repositories. Check their rules before saving or committing account data there.
+
+Research can be incomplete, stale, or mistaken. Numerical scores are decision aids, not predictions of purchase intent. Model research and interpretation can vary between runs; this pack does **not** promise deterministic or repeatable scoring. It does not enforce stage transitions, validate claims automatically, synchronize files, or guarantee that a conversation remembers earlier context. Verify important facts and review outreach yourself.
+
+**GTM First Touch** prioritizes portable instructions, flexible judgment, and a small workflow. **local-gtm** serves the distinct need for controlled state, stronger validation, and more deterministic workflow guarantees. This pack deliberately does not recreate that system.
+
+## Prototype history
+
+The earlier Flask application is preserved only in Git history at commit `6300b09e5eca83314cc3d04a662ca57a4a6fa40f`. To inspect its original README without changing your checkout:
+
+```sh
+git show 6300b09e5eca83314cc3d04a662ca57a4a6fa40f:README.md
+```
+
+The pack preserves the scoring ideas, research passes, persona library, signal-led outreach, Markdown handoffs, and Harbor discovery questions. It replaces the app's hardcoded seller with explicit seller context and connects discovery to the earlier stages. The servers, databases, provider adapters, browser UI, setup tools, and reseeding commands are no longer part of the active product. Removing those files does not delete any databases the prototype previously created in your home directory.
+
+Licensed under the [MIT License](LICENSE).
